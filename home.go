@@ -27,6 +27,8 @@ import "fmt"
 var tmp map[int]int
 
 func main() {
+	tmp = make(map[int]int)
+
 	//跳1级
 	fmt.Println("跳一级时：")
 	fmt.Println(fiber(1))
@@ -37,13 +39,12 @@ func main() {
 	fmt.Println("跳4阶时：")
 	fmt.Println(fiber(4))
 	fmt.Println("跳10阶时：")
-	fmt.Println(fiber(999))
-	tmp = make(map[int]int)
+	fmt.Println(fiber(888))
 
 }
 
 /**
-原生fiber函数
+原生fiber函数:利用map缓存中间结果，优化这个递归
 */
 
 func fiber(n int) int {
@@ -55,6 +56,6 @@ func fiber(n int) int {
 		tmp[n] = n
 		return n
 	}
-	tmp[n] = fiber()
-	return fiber(n-1) + fiber(n-2)
+	tmp[n] = fiber(n-1) + fiber(n-2)
+	return tmp[n]
 }
