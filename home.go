@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+	"time"
+)
 
 /**
   利用斐波契那数列解决青蛙跳台阶问题
@@ -30,17 +34,49 @@ func main() {
 	tmp = make(map[int]int)
 
 	//跳1级
-	fmt.Println("跳一级时：")
-	fmt.Println(fiber(1))
-	fmt.Println("跳二阶时：")
-	fmt.Println(fiber(2))
-	fmt.Println("跳三阶时：")
-	fmt.Println(fiber(3))
-	fmt.Println("跳4阶时：")
-	fmt.Println(fiber(4))
-	fmt.Println("跳10阶时：")
-	fmt.Println(fiber(888))
+	//fmt.Println("跳一级时：")
+	//fmt.Println(fiber(1))
+	//fmt.Println("跳二阶时：")
+	//fmt.Println(fiber(2))
+	//fmt.Println("跳三阶时：")
+	//fmt.Println(fiber(3))
+	//fmt.Println("跳4阶时：")
+	//fmt.Println(fiber(4))
+	//fmt.Println("跳10阶时：")
+	//fmt.Println(fiber(888))
+	//
+	//var phone demo.Phone
+	//
+	//phone = new(demo.NokiaPhone)
+	//phone.Call()
+	//phone = new (demo.IPhone)
+	//phone.Call()
 
+	//_,e:=sqrt(-1)
+	//if(e!=nil){
+	//	fmt.Println(e)
+	////}
+	//code,msg:=demo.TestError()
+	//println(code)
+	//println(msg)
+	//
+	go say("hello")
+	go say("world")
+	time.Sleep(10000 * time.Millisecond)
+}
+
+func say(s string) {
+	for i := 0; i < 5; i++ {
+		time.Sleep(100 * time.Millisecond)
+		fmt.Println(s)
+	}
+}
+
+func sqrt(f float64) (float64, error) {
+	if f < 0 {
+		return 0, errors.New("math:squar root of negatie number")
+	}
+	return 1.0, nil
 }
 
 /**
